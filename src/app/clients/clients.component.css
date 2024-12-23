@@ -1,0 +1,63 @@
+
+  
+  .min-vh-100 {
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  .content-container {
+    max-width: 900px; /* Limit the width of the content */
+    margin: auto; /* Center the content */
+   
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: row; /* Align image and content horizontally */
+    align-items: center; /* Vertically align content */
+    width: 100%; /* Ensure the card fills the container width */
+    padding: 10px; /* Reduce padding for compact height */
+    border: 1px solid #eaeaea; /* Optional card border */
+    border-radius: 8px; /* Optional rounded corners */
+    margin-bottom: 10px; /* Reduce spacing between cards */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for visual distinction */
+    background: #ffffff;
+  }
+  
+  .image-container {
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    margin-right: 10px; /* Reduce spacing between image and card body */
+  }
+  
+  .img-fluid {
+    width: 80px; /* Adjust the image size */
+    height: auto; /* Keep aspect ratio */
+    border-radius: 4px; /* Optional rounded corners for the image */
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column; /* Stack elements inside the body vertically */
+    justify-content: center; /* Align content vertically */
+    text-align: left;
+    flex-grow: 1; /* Allow body to take up remaining space */
+    padding: 0; /* Remove default padding for a compact layout */
+  }
+  
+  .card-title {
+    font-size: 1rem; /* Adjust title font size */
+    margin-bottom: 5px; /* Minimize spacing below title */
+  }
+  
+  .card-text {
+    font-size: 0.875rem; /* Slightly smaller font size for text */
+    margin-bottom: 3px; /* Minimize spacing between text elements */
+  }
+  
+  .badge {
+    font-size: 0.75rem; /* Smaller font size for badges */
+    padding: 4px 6px; /* Compact badge size */
+  }
+  

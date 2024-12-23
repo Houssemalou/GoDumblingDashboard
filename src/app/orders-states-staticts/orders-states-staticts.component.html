@@ -1,0 +1,108 @@
+<div class="container">
+    <!-- Card Section for Progress Display -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title d-flex align-items-center gap-2 mb-7 pb-3">
+          Orders States Overview
+          <span>
+            <iconify-icon
+              icon="solar:question-circle-bold"
+              class="fs-7 d-flex text-muted"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-custom-class="tooltip-success"
+              data-bs-title="Order statistics overview"
+            ></iconify-icon>
+          </span>
+        </h5>
+  
+        <!-- Icons and Percentages -->
+        <div class="row">
+          <div class="col-4 text-center">
+            <iconify-icon
+              icon="solar:check-circle-bold-duotone"
+              class="fs-7 d-flex text-success"
+            ></iconify-icon>
+            <span class="fs-11 mt-2 d-block text-nowrap">Received</span>
+            <h4 class="mb-0 mt-1">{{ receivedPercentage }}%</h4>
+          </div>
+          <div class="col-4 text-center">
+            <iconify-icon
+              icon="solar:alarm-broken"
+              class="fs-7 d-flex text-primary"
+            ></iconify-icon>
+            <span class="fs-11 mt-2 d-block text-nowrap">Delivered</span>
+            <h4 class="mb-0 mt-1">{{ deliveredPercentage }}%</h4>
+          </div>
+          <div class="col-4 text-center">
+            <iconify-icon
+              icon="solar:clock-circle-bold-duotone"
+              class="fs-7 d-flex text-warning"
+            ></iconify-icon>
+            <span class="fs-11 mt-2 d-block text-nowrap">Pending</span>
+            <h4 class="mb-0 mt-1">{{ pendingPercentage }}%</h4>
+          </div>
+          <div class="col-3 text-center">
+            <iconify-icon
+              icon="solar:close-circle-bold-duotone"
+              class="fs-7 d-flex text-danger"
+            ></iconify-icon>
+            <span class="fs-11 mt-2 d-block text-nowrap">Canceled</span>
+            <h4 class="mb-0 mt-1">{{ canceledPercentage }}%</h4>
+          </div>
+        </div>
+  
+        <!-- Progress Bars -->
+        <div class="vstack gap-4 mt-5 pt-2">
+          <div>
+            <div class="hstack justify-content-between">
+              <span class="fs-3 fw-medium">Received</span>
+              <h6 class="fs-3 fw-medium text-dark lh-base mb-0">
+                {{ receivedPercentage }}%
+              </h6>
+            </div>
+            <div class="progress mt-2" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-primary" [style.width.%]="receivedPercentage"></div>
+            </div>
+          </div>
+  
+          <div>
+            <div class="hstack justify-content-between">
+              <span class="fs-3 fw-medium">Delivered</span>
+              <h6 class="fs-3 fw-medium text-dark lh-base mb-0">
+                {{ deliveredPercentage }}%
+              </h6>
+            </div>
+            <div class="progress mt-2" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-success" [style.width.%]="deliveredPercentage"></div>
+            </div>
+          </div>
+  
+          <div>
+            <div class="hstack justify-content-between">
+              <span class="fs-3 fw-medium">Pending</span>
+              <h6 class="fs-3 fw-medium text-dark lh-base mb-0">
+                {{ pendingPercentage }}%
+              </h6>
+            </div>
+            <div class="progress mt-2" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-warning" [style.width.%]="pendingPercentage"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="hstack justify-content-between">
+              <span class="fs-3 fw-medium">Canceled</span>
+              <h6 class="fs-3 fw-medium text-dark lh-base mb-0">
+                {{ canceledPercentage }}%
+              </h6>
+            </div>
+            <div class="progress mt-2" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-danger" [style.width.%]="canceledPercentage"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

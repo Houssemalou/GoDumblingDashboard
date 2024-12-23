@@ -1,0 +1,9 @@
+/* Add some custom spacing */
+.table {
+    margin: 20px 0;
+  }
+  
+  .modal.show {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  

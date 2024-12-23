@@ -1,0 +1,109 @@
+<p-toast></p-toast>
+<div class="container">
+
+    <h4><mark>Manage Orders</mark></h4>
+    <!-- Filter Input -->
+    <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Search by restaurant name or manager..."
+            [(ngModel)]="filterText" (input)="applyFilter()" />
+    </div>
+    <!-- Table -->
+    <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Restaurant Id</th>
+                <th>Restaurant Name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>State</th>
+                <th>Paid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let restaurant of paginatedData; let i = index">
+                <td>{{ restaurant.restaurant_Id }}</td>
+                <td>{{ restaurant.email }}</td>
+                <td>{{ restaurant.restaurant_name }}</td>
+                <td>{{ restaurant.createdAt }}</td>
+               
+                
+                <!-- State Dropdown -->
+                <td>
+                    <select class="form-select" [(ngModel)]="restaurant.state">
+                        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-select" [(ngModel)]="restaurant.bill_state">
+                        <option *ngFor="let status of paymentStatus" [value]="status">{{ status }}</option>
+                    </select>
+                </td>
+
+
+                <td *ngIf="restaurant.id">
+                    <button class="btn btn-link" (click)="updateOrder(restaurant.id, restaurant.state, restaurant.bill_state)" >
+                        <iconify-icon icon="material-symbols:save-outline" class="text-success"></iconify-icon>
+                    </button>
+
+
+                    <button class="btn btn-link" (click)="deleteOrder(restaurant.id)" >
+                        <iconify-icon icon="mdi:delete-outline" class="text-danger"></iconify-icon>
+                    </button>
+
+                    <button class="btn btn-link" (click)="openModal(restaurant)">
+                        <iconify-icon icon="mdi:eye-outline" class="text-primary"></iconify-icon>
+                    </button>
+
+                    <button class="btn btn-link" (click)="sendEmailToAdmin(restaurant)">
+                        <iconify-icon icon="mdi:email-outline" class="text-info"></iconify-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 0">
+                <button class="page-link" (click)="prevPage()">Previous</button>
+            </li>
+            <li class="page-item" *ngFor="let page of pages; let i = index" [class.active]="i === currentPage">
+                <button class="page-link" (click)="goToPage(i)">{{ i + 1 }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === pages.length - 1">
+                <button class="page-link" (click)="nextPage()">Next</button>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Modal -->
+<div class="container modal" tabindex="-1" [ngClass]="{ 'show d-block': isModalOpen }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Restaurant Details</h5>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Restaurant Name:</strong> {{ selectedRestaurant?.restaurant_name }}</p>
+                <p><strong>Date:</strong> {{ selectedRestaurant?.createdAt }}</p>
+                <div *ngIf="selectedRestaurant?.productOrders?.length">
+                    <h6>Product Orders:</h6>
+                    <ul>
+                        <li *ngFor="let productOrder of selectedRestaurant?.productOrders">
+                            <p><strong>Product Name:</strong> {{ productOrder.product?.name }}</p>
+                            <p><strong>Description:</strong> {{ productOrder.product?.description }}</p>
+                            <p><strong>Quantity:</strong> {{ productOrder.quantity }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
