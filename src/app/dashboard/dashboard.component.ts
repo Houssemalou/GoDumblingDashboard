@@ -6,7 +6,7 @@ import { MainContentComponent } from '../main-content/main-content.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NavbarComponent, SidebarComponent, MainContentComponent],
+  imports: [RouterOutlet, NavbarComponent, SidebarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -5,6 +5,9 @@ import { MainContentComponent } from './main-content/main-content.component';
 
 export const routes: Routes = [
   {
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
     path: '', title: 'Dashboard Page', component: DashboardComponent,
     children: [
       { path: 'clients', component: ClientsComponent },
