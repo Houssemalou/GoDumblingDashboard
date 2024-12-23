@@ -18,7 +18,7 @@ export class ClientsComponent {
   newRestaurant = {
     name: '',
     cuisine: '',
-    place:'',
+    city:'',
     deliveryTime: '',
     deliveryCost: '',
     rating: null,
